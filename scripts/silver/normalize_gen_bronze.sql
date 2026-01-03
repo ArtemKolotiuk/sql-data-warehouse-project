@@ -7,6 +7,11 @@
 | `CHAR(13)`  | CR / carriage return (`\r`) |
 
 */
+/*
+LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(gen, CHAR(160),
+''), CHAR(9), ''), CHAR(10),''), CHAR(13), ''))))
+BETTER FOR MS_SQL THAN 'TRIM(gen,)'
+*/
 SELECT CASE
            WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid))
            ELSE cid
